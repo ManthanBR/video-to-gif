@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video to GIF Converter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- FFmpeg.wasm (use the latest CDN version) -->
-    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script> <!-- Or your preferred version -->
 </head>
 <body>
     <div class="container">
@@ -19,14 +21,7 @@
 
         <div class="options-section">
             <h2>Conversion Options</h2>
-            <div>
-                <label for="startTime">Start Time (seconds):</label>
-                <input type="number" id="startTime" value="0" min="0">
-            </div>
-            <div>
-                <label for="duration">Duration (seconds, 0 for full):</label>
-                <input type="number" id="duration" value="5" min="0">
-            </div>
+            <!-- START TIME INPUT REMOVED -->
             <div>
                 <label for="fps">FPS (Frames Per Second):</label>
                 <input type="number" id="fps" value="10" min="1" max="30">
@@ -34,6 +29,10 @@
             <div>
                 <label for="scaleWidth">Width (px, -1 for auto height):</label>
                 <input type="number" id="scaleWidth" value="320" min="50">
+            </div>
+            <div class="checkbox-option">
+                <input type="checkbox" id="compressOutput" name="compressOutput">
+                <label for="compressOutput" class="checkbox-label">Compress Output (smaller file, might reduce quality)</label>
             </div>
         </div>
 

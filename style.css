@@ -1,106 +1,277 @@
+/* --- Palettes --- */
+:root {
+    --bg-main: #fdf6fd; /* Very light pinkish lavender */
+    --bg-container: #f3e5f5; /* Light lavender */
+    --primary-accent: #ba68c8; /* Medium pastel purple */
+    --primary-accent-hover: #aa47bc; /* Darker medium pastel purple */
+    --secondary-accent: #e1bee7; /* Lighter pastel purple */
+    --text-main: #6a1b9a; /* Deep purple */
+    --text-label: #8e24aa; /* Medium purple */
+    --text-light: #4a148c; /* Slightly lighter deep purple for less emphasis */
+    --border-color: #ce93d8; /* Soft purple for borders */
+    --download-bg: #f06292; /* Pastel pink */
+    --download-bg-hover: #ec407a; /* Darker pastel pink */
+    --success-color: #66bb6a; /* Pastel Green for success messages if needed */
+    --disabled-bg: #e6e6e6;
+    --disabled-text: #a0a0a0;
+}
+
 body {
-    font-family: sans-serif;
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
-    color: #333;
+    padding: 30px 20px;
+    background-color: var(--bg-main);
+    color: var(--text-main);
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align to top for longer content */
+    align-items: flex-start;
     min-height: 100vh;
+    box-sizing: border-box;
 }
 
 .container {
-    background: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background: var(--bg-container);
+    padding: 30px 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(106, 27, 154, 0.1); /* Subtle purple shadow */
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
 }
 
-h1, h2 {
+h1 {
     text-align: center;
-    color: #333;
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+}
+
+h2 {
+    text-align: left;
+    color: var(--text-label);
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    border-bottom: 1px solid var(--secondary-accent);
+    padding-bottom: 8px;
 }
 
 .input-section, .options-section, .status-section, .output-section {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-label);
+    font-size: 0.95em;
 }
 
 input[type="file"], input[type="number"] {
-    width: calc(100% - 22px); /* Account for padding and border */
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    color: var(--text-light);
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="file"] {
+    padding: 8px 15px; /* Adjust padding for file input */
+}
+
+input[type="file"]::file-selector-button {
+    margin-right: 15px;
+    border: none;
+    background: var(--primary-accent);
+    padding: 10px 18px;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: var(--primary-accent-hover);
+}
+
+
+input[type="number"]:focus, input[type="file"]:focus-within { /* focus-within for file input wrapper */
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(186, 104, 200, 0.3); /* Soft purple focus ring */
+    outline: none;
 }
 
 button {
     display: block;
     width: 100%;
-    padding: 12px;
-    background-color: #007bff;
+    padding: 14px;
+    background-color: var(--primary-accent);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    font-size: 1.1em;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 10px;
 }
 
 button:hover:not(:disabled) {
-    background-color: #0056b3;
+    background-color: var(--primary-accent-hover);
+    transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0px);
 }
 
 button:disabled {
-    background-color: #ccc;
+    background-color: var(--disabled-bg);
+    color: var(--disabled-text);
     cursor: not-allowed;
+    box-shadow: none;
 }
 
 #statusMessage {
     text-align: center;
     font-style: italic;
+    color: var(--text-label);
+    margin-top: 15px;
+    min-height: 1.5em; /* Prevent layout shift */
 }
 
 #progressBar {
     width: 100%;
     margin-top: 10px;
+    height: 12px;
+    border-radius: 6px;
+    appearance: none; /* Remove default styling */
+    -webkit-appearance: none;
 }
+
+#progressBar::-webkit-progress-bar {
+    background-color: var(--secondary-accent);
+    border-radius: 6px;
+}
+
+#progressBar::-webkit-progress-value {
+    background-color: var(--primary-accent);
+    border-radius: 6px;
+    transition: width 0.3s ease;
+}
+
+#progressBar::-moz-progress-bar { /* Firefox */
+    background-color: var(--primary-accent);
+    border-radius: 6px;
+    transition: width 0.3s ease;
+}
+
 
 #gifPreview {
     display: block;
     max-width: 100%;
-    margin: 10px auto;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    margin: 20px auto 15px;
+    border: 3px solid var(--border-color);
+    border-radius: 12px;
+    background-color: #fff; /* In case GIF has transparency */
+    padding: 5px; /* Small padding around the GIF */
+    box-shadow: 0 4px 15px rgba(106, 27, 154, 0.08);
 }
 
 #downloadLink {
     display: block;
     text-align: center;
-    padding: 10px;
-    background-color: #28a745;
+    padding: 12px;
+    background-color: var(--download-bg);
     color: white;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 8px;
     margin-top: 10px;
-    transition: background-color 0.3s ease;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-size: 1.05em;
 }
 
 #downloadLink:hover {
-    background-color: #1e7e34;
+    background-color: var(--download-bg-hover);
+    transform: translateY(-1px);
 }
 
 /* Hide elements initially */
 #gifPreview, #downloadLink, #progressBar {
     display: none;
+}
+
+/* Options Section layout improvements */
+.options-section > div {
+    margin-bottom: 15px;
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    margin-top: 15px; /* Add some space above the checkbox */
+    margin-bottom: 5px; /* Reduce bottom margin if inputs already have it */
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: var(--primary-accent);
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid var(--border-color);
+    border-radius: 0.25em;
+    transform: translateY(-0.075em); /* Align better with label text */
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--primary-accent);
+    /* For a checkmark style, clip-path is better */
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+    outline: max(2px, 0.15em) solid var(--primary-accent-hover);
+    outline-offset: max(2px, 0.05em);
+}
+
+.checkbox-label {
+    margin-left: 0.5em;
+    font-weight: 400; /* Lighter than main labels */
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+/* Ensure the label has default block/inline-block behavior for margin */
+.options-section > div label.checkbox-label {
+    display: inline; /* To stay next to the checkbox */
+    margin-bottom: 0; /* Override general label margin */
 }
