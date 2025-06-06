@@ -17,7 +17,7 @@ let selectedFile = null;
 
 async function initFFmpeg() {
     if (!ffmpeg || !ffmpeg.isLoaded()) {
-        statusMessage.textContent = 'Loading FFmpeg-core.js...';
+        statusMessage.textContent = 'Loading';
         progressBar.style.display = 'block';
         progressBar.value = 0;
         ffmpeg = createFFmpeg({
@@ -32,7 +32,7 @@ async function initFFmpeg() {
             },
         });
         await ffmpeg.load();
-        statusMessage.textContent = 'FFmpeg loaded. Ready to convert.';
+        statusMessage.textContent = 'Ready to convert.';
         progressBar.style.display = 'none';
     }
 }
@@ -57,7 +57,7 @@ convertToGifButton.addEventListener('click', async () => {
         return;
     }
     if (!ffmpeg || !ffmpeg.isLoaded()) {
-        statusMessage.textContent = 'FFmpeg not loaded. Please wait or refresh.';
+        statusMessage.textContent = 'Please wait or refresh.';
         await initFFmpeg();
         if (!ffmpeg.isLoaded()) return;
     }
@@ -98,7 +98,7 @@ convertToGifButton.addEventListener('click', async () => {
         ffmpegArgs.push('-vf', vfFilter);
         ffmpegArgs.push('-loop', '0', outputFileName);
 
-        statusMessage.textContent = `Running FFmpeg command... This may take a while. ${shouldCompress ? '(Compression enabled)' : ''}`;
+        statusMessage.textContent = `Compressing... This may take a while. ${shouldCompress ? '(Compression enabled)' : ''}`;
         console.log('FFmpeg command:', ['ffmpeg', ...ffmpegArgs].join(' '));
 
         await ffmpeg.run(...ffmpegArgs);
@@ -128,5 +128,5 @@ convertToGifButton.addEventListener('click', async () => {
 });
 
 window.addEventListener('load', async () => {
-    statusMessage.textContent = 'Ready. Select a video or FFmpeg will load on first conversion.';
+    statusMessage.textContent = 'Ready. Select a video';
 });
