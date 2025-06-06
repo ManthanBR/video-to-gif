@@ -1,19 +1,24 @@
 /* --- Palettes --- */
 :root {
-    --bg-main: #fdf6fd; /* Very light pinkish lavender */
-    --bg-container: #f3e5f5; /* Light lavender */
-    --primary-accent: #ba68c8; /* Medium pastel purple */
-    --primary-accent-hover: #aa47bc; /* Darker medium pastel purple */
-    --secondary-accent: #e1bee7; /* Lighter pastel purple */
-    --text-main: #6a1b9a; /* Deep purple */
-    --text-label: #8e24aa; /* Medium purple */
-    --text-light: #4a148c; /* Slightly lighter deep purple for less emphasis */
-    --border-color: #ce93d8; /* Soft purple for borders */
-    --download-bg: #f06292; /* Pastel pink */
-    --download-bg-hover: #ec407a; /* Darker pastel pink */
-    --success-color: #66bb6a; /* Pastel Green for success messages if needed */
-    --disabled-bg: #e6e6e6;
-    --disabled-text: #a0a0a0;
+    --bg-main: #fff0f9; /* Very light pink, almost white, to complement vibrant pink */
+    --bg-container: #ffe3f9; /* Light, slightly more saturated pink than bg-main */
+
+    /* --- VIBRANT PINK ACCENTS --- */
+    --primary-accent: #ff7be9; /* Your chosen vibrant pink */
+    --primary-accent-hover: #fa60de; /* Slightly darker/desaturated version */
+    --secondary-accent: #ffb3f0; /* A lighter, but still related vibrant pink */
+    
+    --text-main: #8c3c7c; /* Deep magenta/purple for contrast against vibrant pinks */
+    --text-label: #a64a93; /* Lighter version of text-main */
+    --text-light: #bf59a9; /* Even lighter, for secondary text */
+    
+    --border-color: #ff9eeB; /* A noticeable pink border, related to primary */
+    --download-bg: #f755dd; /* Keeping download distinct but related */
+    --download-bg-hover: #e042c8; /* Darker version for download hover */
+
+    --success-color: #50c878; /* Emerald green can pop nicely against pink */
+    --disabled-bg: #ffeaf7; /* Very light pink for disabled */
+    --disabled-text: #f4a4e3; /* Muted vibrant pink for disabled text */
 }
 
 body {
@@ -34,7 +39,7 @@ body {
     background: var(--bg-container);
     padding: 30px 35px;
     border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(106, 27, 154, 0.1); /* Subtle purple shadow */
+    box-shadow: 0 8px 25px rgba(140, 60, 124, 0.15); /* Shadow from text-main color, slightly stronger */
     width: 100%;
     max-width: 650px;
 }
@@ -79,13 +84,13 @@ input[type="file"], input[type="number"] {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-size: 1em;
-    color: var(--text-light);
-    background-color: #fff;
+    color: var(--text-light); /* Text color inside input */
+    background-color: #fff; /* White background for inputs for contrast */
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="file"] {
-    padding: 8px 15px; /* Adjust padding for file input */
+    padding: 8px 15px;
 }
 
 input[type="file"]::file-selector-button {
@@ -94,7 +99,7 @@ input[type="file"]::file-selector-button {
     background: var(--primary-accent);
     padding: 10px 18px;
     border-radius: 6px;
-    color: #fff;
+    color: #fff; /* White text on vibrant pink button */
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 500;
@@ -105,18 +110,18 @@ input[type="file"]::file-selector-button:hover {
 }
 
 
-input[type="number"]:focus, input[type="file"]:focus-within { /* focus-within for file input wrapper */
+input[type="number"]:focus, input[type="file"]:focus-within {
     border-color: var(--primary-accent);
-    box-shadow: 0 0 0 3px rgba(186, 104, 200, 0.3); /* Soft purple focus ring */
+    box-shadow: 0 0 0 3px hsla(from var(--primary-accent) h s l / 0.4); /* Stronger focus glow */
     outline: none;
 }
 
-button {
+button { /* Main Convert Button */
     display: block;
     width: 100%;
     padding: 14px;
     background-color: var(--primary-accent);
-    color: white;
+    color: white; /* White text on vibrant pink button */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -148,7 +153,7 @@ button:disabled {
     font-style: italic;
     color: var(--text-label);
     margin-top: 15px;
-    min-height: 1.5em; /* Prevent layout shift */
+    min-height: 1.5em;
 }
 
 #progressBar {
@@ -156,17 +161,17 @@ button:disabled {
     margin-top: 10px;
     height: 12px;
     border-radius: 6px;
-    appearance: none; /* Remove default styling */
+    appearance: none;
     -webkit-appearance: none;
 }
 
 #progressBar::-webkit-progress-bar {
-    background-color: var(--secondary-accent);
+    background-color: var(--secondary-accent); /* Lighter vibrant pink */
     border-radius: 6px;
 }
 
 #progressBar::-webkit-progress-value {
-    background-color: var(--primary-accent);
+    background-color: var(--primary-accent); /* Main vibrant pink */
     border-radius: 6px;
     transition: width 0.3s ease;
 }
@@ -182,11 +187,11 @@ button:disabled {
     display: block;
     max-width: 100%;
     margin: 20px auto 15px;
-    border: 3px solid var(--border-color);
+    border: 3px solid var(--border-color); /* Vibrant pink border */
     border-radius: 12px;
-    background-color: #fff; /* In case GIF has transparency */
-    padding: 5px; /* Small padding around the GIF */
-    box-shadow: 0 4px 15px rgba(106, 27, 154, 0.08);
+    background-color: #fff; /* White bg for preview */
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(140, 60, 124, 0.1);
 }
 
 #downloadLink {
@@ -194,7 +199,7 @@ button:disabled {
     text-align: center;
     padding: 12px;
     background-color: var(--download-bg);
-    color: white;
+    color: white; /* White text on download button */
     text-decoration: none;
     border-radius: 8px;
     margin-top: 10px;
@@ -208,12 +213,10 @@ button:disabled {
     transform: translateY(-1px);
 }
 
-/* Hide elements initially */
 #gifPreview, #downloadLink, #progressBar {
     display: none;
 }
 
-/* Options Section layout improvements */
 .options-section > div {
     margin-bottom: 15px;
 }
@@ -221,22 +224,22 @@ button:disabled {
 .checkbox-option {
     display: flex;
     align-items: center;
-    margin-top: 15px; /* Add some space above the checkbox */
-    margin-bottom: 5px; /* Reduce bottom margin if inputs already have it */
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
-    background-color: #fff;
+    background-color: #fff; /* White bg for checkbox */
     margin: 0;
     font: inherit;
-    color: var(--primary-accent);
+    color: var(--primary-accent); /* Vibrant pink checkmark */
     width: 1.15em;
     height: 1.15em;
-    border: 0.15em solid var(--border-color);
+    border: 0.15em solid var(--border-color); /* Vibrant pink border */
     border-radius: 0.25em;
-    transform: translateY(-0.075em); /* Align better with label text */
+    transform: translateY(-0.075em);
     display: grid;
     place-content: center;
     cursor: pointer;
@@ -248,8 +251,7 @@ input[type="checkbox"]::before {
     height: 0.65em;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--primary-accent);
-    /* For a checkmark style, clip-path is better */
+    box-shadow: inset 1em 1em var(--primary-accent); /* Vibrant pink checkmark */
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
 
@@ -258,20 +260,19 @@ input[type="checkbox"]:checked::before {
 }
 
 input[type="checkbox"]:focus {
-    outline: max(2px, 0.15em) solid var(--primary-accent-hover);
+    outline: max(2px, 0.15em) solid var(--primary-accent-hover); /* Vibrant pink focus */
     outline-offset: max(2px, 0.05em);
 }
 
 .checkbox-label {
     margin-left: 0.5em;
-    font-weight: 400; /* Lighter than main labels */
-    color: var(--text-light);
+    font-weight: 400;
+    color: var(--text-light); /* Lighter magenta/purple text */
     cursor: pointer;
     font-size: 0.9em;
 }
 
-/* Ensure the label has default block/inline-block behavior for margin */
 .options-section > div label.checkbox-label {
-    display: inline; /* To stay next to the checkbox */
-    margin-bottom: 0; /* Override general label margin */
+    display: inline;
+    margin-bottom: 0;
 }
