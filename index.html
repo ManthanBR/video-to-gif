@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video to GIF Converter</title>
+    <title>Filter You - Video to GIF Magic! ✨🎬</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script> <!-- Or your preferred version -->
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script> 
 </head>
 <body>
     <div class="container">
-        <h1>Video to GIF Converter</h1>
+        <h1>Video to GIF Factory!</h1>
 
         <div class="input-section">
-            <label for="videoFile">Choose a video file:</label>
+            <label for="videoFile">Drop Your Video File:</label>
             <input type="file" id="videoFile" accept="video/*">
         </div>
 
         <div class="options-section">
-            <h2>Conversion Options</h2>
-            <!-- START TIME INPUT REMOVED -->
+            <h2>GIFify Options ⚙️</h2>
             <div>
                 <label for="fps">FPS (Frames Per Second):</label>
                 <input type="number" id="fps" value="10" min="1" max="30">
@@ -32,24 +31,24 @@
             </div>
             <div class="checkbox-option">
                 <input type="checkbox" id="compressOutput" name="compressOutput">
-                <label for="compressOutput" class="checkbox-label">Compress Output (smaller file, might reduce quality)</label>
+                <label for="compressOutput" class="checkbox-label">Compress Output (smaller file, might get pixely)</label>
             </div>
         </div>
 
-        <button id="convertToGifButton" disabled>Convert to GIF</button>
+        <button id="convertToGifButton" disabled>Make it GIF! 🔥</button>
 
         <div class="status-section">
-            <p id="statusMessage">Select a video to begin.</p>
+            <p id="statusMessage">Pick a vid to start the GIF party!</p>
             <progress id="progressBar" value="0" max="100" style="display: none;"></progress>
         </div>
 
         <div class="output-section">
-            <h2>Generated GIF:</h2>
-            <img id="gifPreview" src="#" alt="GIF Preview" style="display: none;">
-            <a id="downloadLink" href="#" download="animated.gif" style="display: none;">Download GIF</a>
+            <h2 class="generated-title">Your Fresh GIF:</h2>
+            <img id="gifPreview" src="#" alt="GIF Preview - Loading..." style="display: none;">
+            <a id="downloadLink" href="#" download="animated.gif" style="display: none;">Download Your GIF! 💾</a>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- Assuming script.js handles ffmpeg logic -->
 </body>
 </html>

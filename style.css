@@ -1,278 +1,384 @@
-/* --- Palettes --- */
+/* --- Filter You Theme Applied to Video-to-GIF App --- */
 :root {
-    --bg-main: #fff0f9; /* Very light pink, almost white, to complement vibrant pink */
-    --bg-container: #ffe3f9; /* Light, slightly more saturated pink than bg-main */
+    /* Filter You Palette */
+    --bg-ultra-light: #f8faff; 
+    --bg-subtle-accent: #eef4ff; 
+    --text-dark-pop: #3a3560; 
+    --text-medium-pop: #6b6399;
+    --text-light-pop: #928aaf; 
+    --clr-hot-pink: #ff33a8; 
+    --clr-electric-blue: #00aaff; 
+    --clr-sunny-yellow: #f9d423;
+    --clr-acid-green: #70ff70; 
+    --clr-vibrant-purple: #a855f7; 
+    --clr-candy-orange: #ff8c42;
+    --clr-bright-teal: #2dd4bf; 
 
-    /* --- VIBRANT PINK ACCENTS --- */
-    --primary-accent: #ff7be9; /* Your chosen vibrant pink */
-    --primary-accent-hover: #fa60de; /* Slightly darker/desaturated version */
-    --secondary-accent: #ffb3f0; /* A lighter, but still related vibrant pink */
-    
-    --text-main: #8c3c7c; /* Deep magenta/purple for contrast against vibrant pinks */
-    --text-label: #a64a93; /* Lighter version of text-main */
-    --text-light: #bf59a9; /* Even lighter, for secondary text */
-    
-    --border-color: #ff9eeB; /* A noticeable pink border, related to primary */
-    --download-bg: #f755dd; /* Keeping download distinct but related */
-    --download-bg-hover: #e042c8; /* Darker version for download hover */
+    --font-heading: 'Fredoka One', cursive; 
+    --font-body: 'Poppins', sans-serif; 
 
-    --success-color: #50c878; /* Emerald green can pop nicely against pink */
-    --disabled-bg: #ffeaf7; /* Very light pink for disabled */
-    --disabled-text: #f4a4e3; /* Muted vibrant pink for disabled text */
+    --shadow-funky: 3px 3px 0px var(--text-dark-pop); 
+    --shadow-funky-hover: 5px 5px 0px var(--clr-electric-blue);
+    --shadow-funky-active: 2px 2px 0px var(--text-dark-pop);
+
+    /* App Specific Theming */
+    --border-color-main: var(--text-dark-pop);
+    --border-radius-main: 15px;
+    --border-radius-small: 10px;
+    
+    --disabled-bg: #e0ddee;
+    --disabled-text: #a7a2c7;
+    --success-color: var(--clr-acid-green); /* For potential success messages */
+    --error-color: var(--clr-hot-pink); /* For potential error messages */
+
+    --download-bg: var(--clr-vibrant-purple); 
+    --download-bg-hover: #9333ea; /* Darker purple */
 }
 
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-body);
     line-height: 1.7;
     margin: 0;
     padding: 30px 20px;
-    background-color: var(--bg-main);
-    color: var(--text-main);
+    background-color: var(--bg-ultra-light);
+    color: var(--text-dark-pop);
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body::before { 
+    content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03; z-index: -1; pointer-events: none;
 }
 
 .container {
-    background: var(--bg-container);
+    background: var(--bg-subtle-accent);
     padding: 30px 35px;
-    border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(140, 60, 124, 0.15); /* Shadow from text-main color, slightly stronger */
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--shadow-funky);
+    border: 3px solid var(--border-color-main);
     width: 100%;
-    max-width: 650px;
+    max-width: 700px; /* Adjusted max-width */
 }
 
 h1 {
     text-align: center;
-    color: var(--text-main);
-    font-weight: 600;
+    font-family: var(--font-heading);
+    color: var(--clr-hot-pink);
+    font-weight: 400;
     margin-bottom: 25px;
-    font-size: 2.2em;
+    font-size: 2.5em; /* Fredoka One is punchy */
+    text-shadow: 2px 2px 0 var(--clr-sunny-yellow);
 }
 
 h2 {
     text-align: left;
-    color: var(--text-label);
-    font-weight: 500;
+    font-family: var(--font-heading);
+    color: var(--clr-electric-blue);
+    font-weight: 400;
     margin-top: 30px;
-    margin-bottom: 15px;
-    font-size: 1.4em;
-    border-bottom: 1px solid var(--secondary-accent);
-    padding-bottom: 8px;
+    margin-bottom: 20px; /* Increased bottom margin */
+    font-size: 1.7em;
+    border-bottom: 3px solid var(--clr-sunny-yellow);
+    padding-bottom: 10px;
 }
 
 .input-section, .options-section, .status-section, .output-section {
-    margin-bottom: 25px;
+    margin-bottom: 30px; /* Increased margin */
 }
+.options-section h2 { /* Specific style for options h2 if needed */
+    margin-bottom: 15px;
+}
+
 
 label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--text-label);
-    font-size: 0.95em;
+    font-weight: 600; /* Bolder labels */
+    color: var(--text-dark-pop);
+    font-size: 1em;
 }
 
 input[type="file"], input[type="number"] {
     width: 100%;
     padding: 12px 15px;
     margin-bottom: 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border: 2px solid var(--border-color-main);
+    border-radius: var(--border-radius-small);
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-body);
     font-size: 1em;
-    color: var(--text-light); /* Text color inside input */
-    background-color: #fff; /* White background for inputs for contrast */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-dark-pop); /* Darker text in inputs */
+    background-color: #fff; 
+    box-shadow: var(--shadow-funky);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-
 input[type="file"] {
-    padding: 8px 15px;
+    padding: 10px 12px; /* Slightly less padding for file input consistency */
 }
 
 input[type="file"]::file-selector-button {
     margin-right: 15px;
-    border: none;
-    background: var(--primary-accent);
+    border: none; /* Remove default border */
+    background: var(--clr-electric-blue); /* Themed button */
     padding: 10px 18px;
-    border-radius: 6px;
-    color: #fff; /* White text on vibrant pink button */
+    border-radius: 8px; /* Match other buttons */
+    color: #fff; 
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-weight: 700;
+    font-family: var(--font-body);
+    box-shadow: var(--shadow-funky);
 }
 
 input[type="file"]::file-selector-button:hover {
-    background: var(--primary-accent-hover);
+    background: var(--clr-bright-teal);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-funky-hover);
 }
 
-
-input[type="number"]:focus, input[type="file"]:focus-within {
-    border-color: var(--primary-accent);
-    box-shadow: 0 0 0 3px hsla(from var(--primary-accent) h s l / 0.4); /* Stronger focus glow */
+input[type="number"]:focus, 
+input[type="file"]:focus-within { /* Use focus-within for file input parent */
+    border-color: var(--clr-hot-pink);
+    box-shadow: 0 0 0 3px hsla(from var(--clr-hot-pink) h s l / 0.4), var(--shadow-funky-hover);
     outline: none;
 }
 
-button { /* Main Convert Button */
+/* Main Convert Button */
+#convertToGifButton { 
     display: block;
     width: 100%;
     padding: 14px;
-    background-color: var(--primary-accent);
-    color: white; /* White text on vibrant pink button */
-    border: none;
-    border-radius: 8px;
+    background: linear-gradient(45deg, var(--clr-hot-pink), var(--clr-candy-orange), var(--clr-sunny-yellow));
+    color: #fff !important; 
+    border: 2px solid var(--border-color-main);
+    border-radius: var(--border-radius-small);
     cursor: pointer;
-    font-size: 1.1em;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    margin-top: 10px;
+    font-size: 1.25em; /* Prominent CTA */
+    font-weight: 400; /* Fredoka One is bold */
+    font-family: var(--font-heading); 
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    box-shadow: var(--shadow-funky);
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+    margin-top: 15px;
 }
 
-button:hover:not(:disabled) {
-    background-color: var(--primary-accent-hover);
-    transform: translateY(-1px);
+#convertToGifButton:hover:not(:disabled) {
+    transform: translateY(-3px) scale(1.03) rotate(-1deg);
+    box-shadow: var(--shadow-funky-hover);
+    filter: brightness(1.1);
 }
 
-button:active:not(:disabled) {
-    transform: translateY(0px);
+#convertToGifButton:active:not(:disabled) {
+    transform: translateY(1px) scale(0.98) rotate(0.5deg);
+    box-shadow: var(--shadow-funky-active);
 }
 
-button:disabled {
-    background-color: var(--disabled-bg);
-    color: var(--disabled-text);
+#convertToGifButton:disabled {
+    background: var(--disabled-bg);
+    color: var(--disabled-text) !important;
     cursor: not-allowed;
-    box-shadow: none;
+    box-shadow: 2px 2px 0px var(--text-light-pop);
+    border-color: var(--text-light-pop);
+    transform: none;
+    filter: none;
+    text-shadow: none;
 }
 
 #statusMessage {
     text-align: center;
-    font-style: italic;
-    color: var(--text-label);
-    margin-top: 15px;
+    font-weight: 600;
+    color: var(--text-medium-pop);
+    margin-top: 20px;
     min-height: 1.5em;
+    font-size: 1em;
 }
+/* Specific status styles (error, success, processing) can be added here if needed */
+
 
 #progressBar {
     width: 100%;
-    margin-top: 10px;
-    height: 12px;
-    border-radius: 6px;
+    margin-top: 15px;
+    height: 18px; /* Thicker progress bar */
+    border-radius: var(--border-radius-small);
     appearance: none;
     -webkit-appearance: none;
+    border: 2px solid var(--border-color-main); /* Border for progress bar */
+    box-shadow: var(--shadow-funky);
+    overflow: hidden; /* To make inner radius work with border */
 }
 
 #progressBar::-webkit-progress-bar {
-    background-color: var(--secondary-accent); /* Lighter vibrant pink */
-    border-radius: 6px;
+    background-color: var(--bg-subtle-accent); 
+    border-radius: calc(var(--border-radius-small) - 2px); /* Inner radius */
 }
 
 #progressBar::-webkit-progress-value {
-    background-color: var(--primary-accent); /* Main vibrant pink */
-    border-radius: 6px;
+    background: linear-gradient(90deg, var(--clr-acid-green), var(--clr-sunny-yellow)); 
+    border-radius: calc(var(--border-radius-small) - 2px);
     transition: width 0.3s ease;
 }
 
 #progressBar::-moz-progress-bar { /* Firefox */
-    background-color: var(--primary-accent);
-    border-radius: 6px;
+    background: linear-gradient(90deg, var(--clr-acid-green), var(--clr-sunny-yellow));
+    border-radius: calc(var(--border-radius-small) - 2px);
     transition: width 0.3s ease;
 }
-
 
 #gifPreview {
     display: block;
     max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    max-height: 400px; /* Limit preview height */
     margin: 20px auto 15px;
-    border: 3px solid var(--border-color); /* Vibrant pink border */
-    border-radius: 12px;
-    background-color: #fff; /* White bg for preview */
-    padding: 5px;
-    box-shadow: 0 4px 15px rgba(140, 60, 124, 0.1);
+    border: 3px solid var(--border-color-main); 
+    border-radius: var(--border-radius-main); /* Larger radius */
+    background-color: #fff; 
+    padding: 8px; /* More padding */
+    box-shadow: var(--shadow-funky);
+    object-fit: contain;
 }
 
 #downloadLink {
-    display: block;
+    display: block; /* Will be changed to none by JS initially */
     text-align: center;
-    padding: 12px;
+    padding: 12px 20px;
     background-color: var(--download-bg);
-    color: white; /* White text on download button */
+    color: white; 
     text-decoration: none;
-    border-radius: 8px;
-    margin-top: 10px;
-    font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    font-size: 1.05em;
+    border-radius: var(--border-radius-small);
+    border: 2px solid var(--border-color-main);
+    margin-top: 15px;
+    font-weight: 700; /* Bolder download link */
+    font-family: var(--font-body);
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    box-shadow: var(--shadow-funky);
+    font-size: 1.1em;
 }
 
 #downloadLink:hover {
     background-color: var(--download-bg-hover);
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.02) rotate(1deg);
+    box-shadow: var(--shadow-funky-hover);
 }
 
 #gifPreview, #downloadLink, #progressBar {
-    display: none;
+    display: none; /* Initially hidden by JS or CSS */
 }
+.output-section h2.generated-title { /* Assuming JS adds this class when there's output */
+    /* Copied from general h2, but can be specific */
+    text-align: left;
+    font-family: var(--font-heading);
+    color: var(--clr-electric-blue);
+    font-weight: 400;
+    margin-top: 0; /* Output H2 might not need large top margin */
+    margin-bottom: 20px; 
+    font-size: 1.7em;
+    border-bottom: 3px solid var(--clr-sunny-yellow);
+    padding-bottom: 10px;
+}
+.output-section h2.generated-title.hidden { display: none; }
+
 
 .options-section > div {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Increased space */
 }
 
 .checkbox-option {
     display: flex;
     align-items: center;
-    margin-top: 15px;
-    margin-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #fff; /* Give checkbox row a bg for contrast with container */
+    padding: 12px 15px;
+    border-radius: var(--border-radius-small);
+    border: 2px solid var(--border-color-main);
+    box-shadow: var(--shadow-funky);
 }
 
 input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
-    background-color: #fff; /* White bg for checkbox */
+    background-color: var(--bg-ultra-light); /* Light bg for checkbox */
     margin: 0;
     font: inherit;
-    color: var(--primary-accent); /* Vibrant pink checkmark */
-    width: 1.15em;
-    height: 1.15em;
-    border: 0.15em solid var(--border-color); /* Vibrant pink border */
-    border-radius: 0.25em;
+    color: var(--clr-hot-pink); 
+    width: 1.25em; /* Slightly larger */
+    height: 1.25em;
+    border: 2px solid var(--border-color-main); 
+    border-radius: 0.3em; /* Softer radius */
     transform: translateY(-0.075em);
     display: grid;
     place-content: center;
     cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+input[type="checkbox"]:hover {
+    border-color: var(--clr-hot-pink);
 }
 
 input[type="checkbox"]::before {
     content: "";
-    width: 0.65em;
-    height: 0.65em;
+    width: 0.7em; /* Adjust checkmark size */
+    height: 0.7em;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--primary-accent); /* Vibrant pink checkmark */
+    box-shadow: inset 1em 1em var(--clr-hot-pink); 
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
 
+input[type="checkbox"]:checked {
+    background-color: var(--clr-acid-green); /* Fun checked state */
+    border-color: var(--clr-acid-green);
+}
 input[type="checkbox"]:checked::before {
     transform: scale(1);
+    box-shadow: inset 1em 1em var(--text-dark-pop); /* Dark check on green bg */
 }
 
 input[type="checkbox"]:focus {
-    outline: max(2px, 0.15em) solid var(--primary-accent-hover); /* Vibrant pink focus */
-    outline-offset: max(2px, 0.05em);
+    outline: 3px solid hsla(from var(--clr-hot-pink) h s l / 0.5); 
+    outline-offset: 2px;
 }
 
 .checkbox-label {
-    margin-left: 0.5em;
-    font-weight: 400;
-    color: var(--text-light); /* Lighter magenta/purple text */
+    margin-left: 0.75em; /* More space */
+    font-weight: 500; /* Slightly bolder */
+    color: var(--text-dark-pop); 
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 0.95em;
+}
+.options-section > div label.checkbox-label { /* Ensure these are still inline */
+    display: inline; margin-bottom: 0; 
 }
 
-.options-section > div label.checkbox-label {
-    display: inline;
-    margin-bottom: 0;
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body { padding: 20px 15px; }
+    .container { padding: 25px 20px; }
+    h1 { font-size: 2em; }
+    h2, .output-section h2.generated-title { font-size: 1.5em; }
+    #convertToGifButton { font-size: 1.15em; }
+}
+
+@media (max-width: 480px) {
+    body { padding: 15px 10px; }
+    .container { padding: 20px 15px; }
+    h1 { font-size: 1.8em; margin-bottom: 20px; }
+    h2, .output-section h2.generated-title { font-size: 1.3em; margin-bottom: 15px; }
+    input[type="file"], input[type="number"] { padding: 10px 12px; font-size: 0.95em; }
+    input[type="file"]::file-selector-button { padding: 8px 15px; font-size: 0.9em;}
+    label { font-size: 0.9em; }
+    .checkbox-label { font-size: 0.9em; }
+    #convertToGifButton { font-size: 1.1em; padding: 12px; }
+    #downloadLink { font-size: 1em; padding: 10px; }
+    .checkbox-option { padding: 10px 12px; }
 }
